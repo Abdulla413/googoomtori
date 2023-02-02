@@ -1,0 +1,15 @@
+{
+    "appTitle": "Welcome to Googoom!",
+    "arishPedia": "Arishpedia",
+    "news": "news",
+    "termiler": "Termiler",
+    "websites": "Web sites",
+    "about": "Who are we؟",
+    "support": "Support",
+    "contact": "Contact",
+    "locale":{
+      "uy":"Uyghur",
+      "en":"Enlish",
+      "uyl":"UYL"
+    }
+}
