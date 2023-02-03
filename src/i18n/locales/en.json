@@ -1,12 +1,24 @@
 {
-    "appTitle": "Welcome to Googoom!",
+  "pageHeader":{
+    "oyuq":"Oyuq",
+    "soralghu":"Soralghu",
+    "tarim":"Tarim",
+    "ghunchilar":"Ghunchilar",
+    "freeEastturkistan":"Hor Sherqi Turkistan",
+    "vedioChanle":"Kakkuk",
+    "images":"Korkem",
     "arishPedia": "Arishpedia",
-    "news": "news",
-    "termiler": "Termiler",
-    "websites": "Web sites",
-    "about": "Who are we؟",
+  "news": "Hewerler",
+  "termiler": "Termiler",
+  "websites": "Baghlinish"
+
+  },
+    "pageFooter":{
+    "about": "Who are we?",
     "support": "Support",
-    "contact": "Contact",
+    "contact": "Contact"
+    },
+    
     "locale":{
       "uy":"Uyghur",
       "en":"Enlish",

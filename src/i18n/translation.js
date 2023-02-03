@@ -9,11 +9,9 @@ const Trans = {
   },
   async switchLanguage(newLocale) {
     Trans.currentLocale = newLocale;
-    document.querySelector("html").setAttribute("lang", newLocale);
-    // eslint-disable-next-line no-constant-condition
     if (newLocale === "uyl") {
-      document.getElementById("app").setAttribute("dir", "auto");
-    }
+        document.getElementById("app").setAttribute("dir", "ltr");
+      }
   },
 };
 

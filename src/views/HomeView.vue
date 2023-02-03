@@ -1,7 +1,6 @@
 <script setup>
-import FooterCom from "@/components/FooterCom.vue";
+import FooterCom from "../components/homepage/FooterCom.vue";
 import LanguageSwitcher from "@/components/homepage/LanguageSwitcher.vue";
-
 </script>
 
 <template>
@@ -14,69 +13,99 @@ import LanguageSwitcher from "@/components/homepage/LanguageSwitcher.vue";
       <div class="flex justify-center gap-2 items-center">
         <img class="w-[7rem]" src="../assets/googoom-logo-aq.png" alt="" />
         <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem]" />
-        <LanguageSwitcher class="bg-[#893311] border-none rounded-lg flex justify-center items-center"/>
+        <LanguageSwitcher class="bg-[#893311] border-none rounded-lg" />
       </div>
       <font-awesome-icon icon="fa-solid fa-bars" class="text-2xl md:hidden" />
       <font-awesome-icon icon="fa-solid fa-xmark" class="text-2xl hidden" />
+      <ul class="flex pb-3 gap-3 md:gap-5 md:text-lg">
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.arishPedia") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="/googoomnews"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.news") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.termiler") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#20B2AA] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.soralghu") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00FFFF] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.korkem") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.freeEastturkistan") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.oyuq") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.kakkuk") }}</router-link
+          >
+        </li>
+
+        <li>
+          <router-link
+            to="#"
+            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.tarim") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.ghunchilar") }}</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            to="#"
+            class="text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >{{ $t("pageHeader.websites") }}</router-link
+          >
+        </li>
+      </ul>
       <p class="text-3xl hidden md:block">Googoom</p>
     </nav>
     <div class="mb-auto flex flex-col justify-center items-center md:h-[65%]">
-      <div>{{ $t("appTitle") }}</div>
       <div
         class="flex flex-col mb-5 justify-center items-center w-[300px] md:flex-row mb:gap-5 md:w-[450px] md:gap-7 md:mb-[6rem]"
       >
         <img src="../assets/shiir1.png" />
         <img src="../assets/shiir2.png" />
       </div>
-
-      <ul class="flex pb-3 gap-3 md:gap-5 md:text-xl">
-        <li>
-          <router-link
-            to="/wiki"
-            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("arishPedia") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="/googoomnews"
-            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("news") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="/termiler"
-            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("termiler") }}</router-link
-          >
-        </li>
-        <!-- <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">سورالغۇ</router-link>
-                </li> -->
-        <!-- <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">كۆركەم</router-link>
-                </li>
-                <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">غۇنچىلار</router-link>
-                </li>
-                <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">ئويۇق</router-link>
-                </li>
-                <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">كاككۇك</router-link>
-                </li>
-                <li>
-                  <router-link to="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">تارىم</router-link>
-                </li> -->
-        <li>
-          <router-link
-            to="#"
-            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("websites") }}</router-link
-          >
-        </li>
-      </ul>
 
       <form class="w-auto md:w-2/5">
         <label

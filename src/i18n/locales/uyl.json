@@ -1,9 +1,19 @@
 {
-    "appTitle": "GooGoom Torigha Xush Keldingiz!",
-    "arishPedia": "Arishpedia",
+    "pageHeader":{
+      "oyuq":"Oyuq",
+      "soralghu":"Soralghu",
+      "tarim":"Tarim",
+      "ghunchilar":"Ghunchilar",
+      "freeEastturkistan":"Hor Sherqi Turkistan",
+      "kakkuk":"Kakkuk",
+      "korkem":"Korkem",
+      "arishPedia": "Arishpedia",
     "news": "Hewerler",
     "termiler": "Termiler",
-    "websites": "Baghlinish",
+    "websites": "Baghlinish"
+
+    },
+    
     "about": "Biz Kim?",
     "support": "Qollang",
     "contact": "Alaqe Qiling",

@@ -1,14 +1,30 @@
 {
-    "appTitle": "گۇگۇم تورىغا خۇش كەلدىڭىز!",
+  "pageHeader":{
+    "oyuq":"ئويۇق",
+    "soralghu":"سورالغۇ",
+    "tarim":"تارىم",
+    "ghunchilar":"غۇنچىلار",
+    "freeEastturkistan":"ھۆر شەرقىي تۈكىستان",
+    "kakkuk":"كاككۇك",
+    "korkem":"كۆركەم",
     "arishPedia": "ئارىشپىدىيا",
     "news": "خەۋەرلەر",
     "termiler": "تەرمىلەر",
-    "websites": "باغلىنىش",
-    "about": "بىز كىم",
-    "support": "قۇللاڭ",
-    "contact": "ئالاقە قىلىڭ",
+    "websites": "باغلىنىش"
+
+  }  ,
+  
+    
+    
     "locale":{
       "uy":"ئۇيغۇرچە",
       "uyl":"Uyghurche"
+    },
+
+    "footer":{
+      "copyright":"",
+      "about": "بىز كىم",
+      "support": "قۇللاڭ",
+    "contact": "ئالاقە قىلىڭ"
     }
   }

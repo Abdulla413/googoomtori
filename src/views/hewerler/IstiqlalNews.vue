@@ -4,16 +4,15 @@ import * as cheerio from "cheerio";
 import NewsCard from "@/components/hewerler/NewsCard.vue";
 import HeaderVue from "@/components/hewerler/HeaderVue.vue";
 import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
-import FooterCom from "@/components/FooterCom.vue";
+import FooterCom from "@/components/homepage/FooterCom.vue";
 import AgentsLink from "@/components/hewerler/AgentsLink.vue";
 import { onMounted, ref } from "vue";
-import SpinnerCom from "../../components/SpinnerCom.vue"
+import SpinnerCom from "../../components/SpinnerCom.vue";
 
 const latestPosts = ref([]);
 const isLoading = ref(false);
 
 onMounted(() => {
-  
   let url = "https://www.istiqlalhaber.com/";
   let dataArray = [];
   axios({
@@ -36,9 +35,7 @@ onMounted(() => {
     return (latestPosts.value = dataArray);
   });
 
-  isLoading.value=false;
-
-
+  isLoading.value = false;
 });
 </script>
 
@@ -46,13 +43,12 @@ onMounted(() => {
   <div>
     <HeaderVue />
     <welcome-news />
-    <SpinnerCom v-show="isLoading" class="w-20 text-center"/>
+    <SpinnerCom v-show="isLoading" class="w-20 text-center" />
     <div class="flex">
       <div class="flex flex-col items-center justify-center w-4/5">
         <div
           class="flex hidden w-full gap-[3rem] items-center justify-center font-alkatip_t m-3 py-2 bg-blue-700 text-xl text-white md:flex"
         >
-        
           <AgentsLink :message="'گۇگۇم خەۋەرلرى'" :direction="'/googoomnews'" />
           <AgentsLink
             :message="'ئىستىقلال خەۋەرلرى'"

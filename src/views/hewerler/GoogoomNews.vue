@@ -1,7 +1,7 @@
 <script>
 import HeaderVue from "@/components/hewerler/HeaderVue.vue";
 import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
-import FooterCom from "@/components/FooterCom.vue";
+import FooterCom from "@/components/homepage/FooterCom.vue";
 export default {
   components: { HeaderVue, WelcomeNews, FooterCom },
 };
