@@ -14,7 +14,15 @@
 
   }  ,
   
-    
+
+
+  "newsAgency":{
+    "googoomnews":"گۇگۇم خەۋەرلىرى",
+    "istiqlalnews":"ئىستىقلال خەۋەرلىرى",
+    "turkistantimes":"تۈركىستان تايمىس",
+    "iuyghurnews":"ئۇيغۇر ئاگنىتلىقى"  
+  },
+     
     
     "locale":{
       "uy":"ئۇيغۇرچە",

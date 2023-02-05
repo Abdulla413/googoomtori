@@ -2,7 +2,8 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import NewsCard from "@/components/hewerler/NewsCard.vue";
-import HeaderVue from "@/components/hewerler/HeaderVue.vue";
+import NewsHeader from "@/components/hewerler/NewsHeader.vue";
+import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
 import { onMounted, ref } from "vue";
 
 const latestPosts = ref([]);
@@ -49,8 +50,9 @@ onMounted(() => {
 
 <template>
   <div>
-    <HeaderVue />
-    <div class="flex flex-col gap-5">
+    <NewsHeader />
+    <WelcomeNews :hewerQanili="'ئۇيغۇر ئاگنىتلىقى خەۋەر'" class="pt-[6rem] "/>
+    <div class="flex flex-col mt-2 gap-5">
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
         <NewsCard
           v-for="(post, index) in latestPosts.slice(0, 24)"

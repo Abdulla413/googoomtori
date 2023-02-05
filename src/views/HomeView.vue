@@ -1,113 +1,32 @@
 <script setup>
-import FooterCom from "../components/homepage/FooterCom.vue";
-import LanguageSwitcher from "@/components/homepage/LanguageSwitcher.vue";
+import FooterCom from "@/components/homepage/FooterCom.vue";
+import GoogoomHeader from "@/components/homepage/GoogoomHeader.vue";
 </script>
 
 <template>
   <div
     class="flex flex-col mx-auto mb-4 justify-center h-screen font-alkatip_t"
   >
-    <nav
-      class="flex text-white p-3 h-[5rem] bg-[#893311] items-center justify-between"
-    >
-      <div class="flex justify-center gap-2 items-center">
-        <img class="w-[7rem]" src="../assets/googoom-logo-aq.png" alt="" />
-        <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem]" />
-        <LanguageSwitcher class="bg-[#893311] border-none rounded-lg" />
-      </div>
-      <font-awesome-icon icon="fa-solid fa-bars" class="text-2xl md:hidden" />
-      <font-awesome-icon icon="fa-solid fa-xmark" class="text-2xl hidden" />
-      <ul class="flex pb-3 gap-3 md:gap-5 md:text-lg">
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.arishPedia") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="/googoomnews"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.news") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-green-200 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.termiler") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#20B2AA] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.soralghu") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#00FFFF] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.korkem") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.freeEastturkistan") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.oyuq") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.kakkuk") }}</router-link
-          >
-        </li>
+    <googoom-header />
 
-        <li>
-          <router-link
-            to="#"
-            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.tarim") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.ghunchilar") }}</router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="#"
-            class="text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >{{ $t("pageHeader.websites") }}</router-link
-          >
-        </li>
-      </ul>
-      <p class="text-3xl hidden md:block">Googoom</p>
-    </nav>
-    <div class="mb-auto flex flex-col justify-center items-center md:h-[65%]">
+    <div class="mb-auto flex flex-col justify-center items-center pt-[6rem] md:pt-[8rem]">
       <div
-        class="flex flex-col mb-5 justify-center items-center w-[300px] md:flex-row mb:gap-5 md:w-[450px] md:gap-7 md:mb-[6rem]"
+        class="flex flex-col justify-center items-center md:gap-8 md:flex-row"
       >
-        <img src="../assets/shiir1.png" />
-        <img src="../assets/shiir2.png" />
+        <img
+          src="../assets/shiir1.png"
+          alt="Googoom shir1"
+          class="w-4/5 md:w-[450px]"
+        />
+
+        <img
+          src="../assets/shiir2.png"
+          alt="Googoom shir2"
+          class="w-4/5 md:w-[450px]"
+        />
       </div>
 
-      <form class="w-auto md:w-2/5">
+      <form class="w-auto mt-[2rem] md:w-2/5 md:mt-[5rem]">
         <label
           for="default-search"
           class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

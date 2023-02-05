@@ -12,7 +12,7 @@ export default {
 </script>
 <template>
   <nav
-    class="bg-[#893311] px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+    class="bg-[#893311] font-alkatip_t px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
   >
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex justify-center gap-4 items-center text-white">
@@ -62,89 +62,39 @@ export default {
         <ul
           class="flex flex-col p-4 mt-4 md:flex-row md:space-x-6 md:mt-0 md:text-md md:font-medium md:border-0 md:bg-[#893311] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <li>
+        <li>
             <router-link
-              to="#"
+              to="/googoomnews"
               class="rounded font-medium hover:bg-transparent hover:text-[#00FF7F] md:p-0 md: md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               ></router-link
             >
           </li>
           <li>
             <router-link
-              to="#"
-              class="rounded font-medium hover:bg-transparent hover:text-[#00FF7F] md:p-0 md: md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.arishPedia") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
               to="/googoomnews"
+              class="rounded font-medium hover:bg-transparent hover:text-[#00FF7F] md:p-0 md: md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              >{{ $t("newsAgency.googoomnews") }}</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/istiqlalnews"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.news") }}</router-link
+              >{{ $t("newsAgency.istiqlalnews") }}</router-link
             >
           </li>
           <li>
             <router-link
-              to="#"
+              to="/turkistantimes"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.termiler") }}</router-link
+              >{{ $t("newsAgency.turkistantimes") }}</router-link
             >
           </li>
           <li>
             <router-link
-              to="#"
+              to="/iuyghurnews"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.soralghu") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.korkem") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="font-medium rounded-full md:bg-blue-500 md:mx-[1rem] md:px-[1rem] md:py-2 md:hover:bg-blue-500 md:hover:bg-transparent md:hover:text-black md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.freeEastturkistan") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="font-medium rounded hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.oyuq") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.kakkuk") }}</router-link
-            >
-          </li>
-
-          <li>
-            <router-link
-              to="#"
-              class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.tarim") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.ghunchilar") }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              to="#"
-              class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >{{ $t("pageHeader.websites") }}</router-link
+              >{{ $t("newsAgency.iuyghurnews") }}</router-link
             >
           </li>
         </ul>

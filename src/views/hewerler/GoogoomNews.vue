@@ -1,16 +1,17 @@
 <script>
-import HeaderVue from "@/components/hewerler/HeaderVue.vue";
-import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
+import WelcomeNews from "../../components/hewerler/WelcomeNews.vue";
 import FooterCom from "@/components/homepage/FooterCom.vue";
+import NewsHeader from "@/components/hewerler/NewsHeader.vue";
 export default {
-  components: { HeaderVue, WelcomeNews, FooterCom },
+  components: {  WelcomeNews, FooterCom, NewsHeader },
 };
 </script>
 
 <template>
   <div class="">
-    <HeaderVue />
-    <welcome-news />
+    <NewsHeader />
+    <WelcomeNews :hewerQanili="'گۇگۇم خەۋەر'" class="pt-[7rem]"/>
+
     <h3 class="font-alkatip-Ui">گۇگۇم خەۋەرلىرى</h3>
     <div class="grid gap-3 grid-cols-1 justify-items-center lg:grid-cols-3">
       <div class="py-10">

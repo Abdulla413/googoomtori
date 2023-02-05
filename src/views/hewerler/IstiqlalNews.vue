@@ -2,11 +2,10 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import NewsCard from "@/components/hewerler/NewsCard.vue";
-import HeaderVue from "@/components/hewerler/HeaderVue.vue";
 import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
 import FooterCom from "@/components/homepage/FooterCom.vue";
-import AgentsLink from "@/components/hewerler/AgentsLink.vue";
 import { onMounted, ref } from "vue";
+import NewsHeader from "../../components/hewerler/NewsHeader.vue";
 import SpinnerCom from "../../components/SpinnerCom.vue";
 
 const latestPosts = ref([]);
@@ -41,31 +40,13 @@ onMounted(() => {
 
 <template>
   <div>
-    <HeaderVue />
-    <welcome-news />
+    <NewsHeader />
+    <WelcomeNews :hewerQanili="'ئىستىقلال خەۋەر'" class="pt-[7rem]"/>
     <SpinnerCom v-show="isLoading" class="w-20 text-center" />
     <div class="flex">
-      <div class="flex flex-col items-center justify-center w-4/5">
+      <div class="flex flex-col items-center justify-center w-2/3">
         <div
-          class="flex hidden w-full gap-[3rem] items-center justify-center font-alkatip_t m-3 py-2 bg-blue-700 text-xl text-white md:flex"
-        >
-          <AgentsLink :message="'گۇگۇم خەۋەرلرى'" :direction="'/googoomnews'" />
-          <AgentsLink
-            :message="'ئىستىقلال خەۋەرلرى'"
-            :direction="'/istiqlalnews'"
-          />
-
-          <AgentsLink
-            :message="'تۈركىستان تايمىس'"
-            :direction="'/turkistantimes'"
-          />
-          <AgentsLink
-            :message="'ئۇيغۇر ئاگنىتلىقى'"
-            :direction="'/iuyghurnews'"
-          />
-        </div>
-        <div
-          class="grid w-full grid-cols-1 justify-items-center gap-2 p-2 lg:grid-cols-4 md:grid-cols-3 lg:grid-cols-3"
+          class="grid w-full grid-cols-1 justify-items-center gap-5 p-2 md:grid-cols-3 lg:grid-cols-3"
         >
           <NewsCard
             v-for="(post, index) in latestPosts.slice(0, 24)"
@@ -75,7 +56,7 @@ onMounted(() => {
           />
         </div>
       </div>
-      <div class="w-1/5"></div>
+      <div class=""></div>
     </div>
     <footer-com />
   </div>

@@ -11,12 +11,21 @@
     "news": "Hewerler",
     "termiler": "Termiler",
     "websites": "Baghlinish"
+},
 
-    },
-    
+"newsAgency":{
+  "googoomnews":"Googoom Xewerliri",
+  "istiqlalnews":"Istiqlal Xewerliri",
+  "turkistantimes":"Turkistan Taimis",
+  "iuyghurnews":"Uyghur Agnitliqi"
+},
+    "footer":{
+    "copyright":"",
     "about": "Biz Kim?",
     "support": "Qollang",
-    "contact": "Alaqe Qiling",
+    "contact": "Alaqe Qiling"
+    },    
+    
     "locale":{
       "uy":"ئۇيغۇرچە",
       "uyl":"Uyghurche"
