@@ -9,7 +9,9 @@ import GoogoomHeader from "@/components/homepage/GoogoomHeader.vue";
   >
     <googoom-header />
 
-    <div class="mb-auto flex flex-col justify-center items-center pt-[6rem] md:pt-[8rem]">
+    <div
+      class="mb-auto flex flex-col justify-center items-center pt-[6rem] md:pt-[8rem]"
+    >
       <div
         class="flex flex-col justify-center items-center md:gap-8 md:flex-row"
       >

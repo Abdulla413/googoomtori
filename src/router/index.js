@@ -4,6 +4,7 @@ import GoogoomNews from "@/views/hewerler/GoogoomNews.vue";
 import IstiqlalNews from "@/views/hewerler/IstiqlalNews.vue";
 import IuyghurNews from "@/views/hewerler/IuyghurNews.vue";
 import TurkistanTimes from "@/views/hewerler/TurkistanTimes.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/iuyghurnews",
       name: "IuyghurNews",
       component: IuyghurNews,
+    },
+    {
+      path: "/:notfound(.*)",
+      name: "notFound",
+      component: NotFound,
     },
   ],
 });

@@ -29,5 +29,9 @@
     "locale":{
       "uy":"ئۇيغۇرچە",
       "uyl":"Uyghurche"
-    }
+    },
+    "notFoundPage":{
+      "notFound":"Bu bet tipilmidi!",
+      "viewOther":"Bu betlerning birersini ziyaret qilamsiz?"
+      }
   }

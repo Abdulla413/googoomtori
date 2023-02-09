@@ -17,6 +17,7 @@ onMounted(() => {
   axios({
     method: "get",
     url: url,
+   
   }).then(function (response) {
     const html = response.data;
     let $ = cheerio.load(html);
