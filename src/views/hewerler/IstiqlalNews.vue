@@ -12,7 +12,7 @@ const latestPosts = ref([]);
 const isLoading = ref(false);
 
 onMounted(() => {
-  let url = "https://www.istiqlalhaber.com/";
+  let url = "https://googoomtori.vercel.app/https://www.istiqlalhaber.com/";
   let dataArray = [];
   axios({
     method: "get",
