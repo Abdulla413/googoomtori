@@ -1,4 +1,4 @@
-<script setup>
+<script setup >
 import axios from "axios";
 import * as cheerio from "cheerio";
 import NewsCard from "@/components/hewerler/NewsCard.vue";
@@ -25,6 +25,7 @@ onMounted(() => {
       const url = $(this).find("a").attr("href");
       const image = $(this).find("img").attr("src");
       const title = $(this).find("div.baslik").html();
+      
       // putdata in array
       dataArray.push({
         url: `https://www.istiqlalhaber.com/${url}`,
@@ -34,7 +35,7 @@ onMounted(() => {
     });
     return (latestPosts.value = dataArray);
   });
-
+console.log(dataArray, "this is data array")
   isLoading.value = false;
 });
 </script>
