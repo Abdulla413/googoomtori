@@ -12,13 +12,16 @@ const latestPosts = ref([]);
 const isLoading = ref(false);
 
 onMounted(() => {
-  let url = "https://www.istiqlalhaber.com/";
+  let url = "https://cors-anywhere.herokuapp.com/https://www.istiqlalhaber.com/";
   let dataArray = [];
   axios({
     method: "get",
     url: url,
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    }
    
-  }).then(function (response) {
+  }).then( (response) => {
     const html = response.data;
     let $ = cheerio.load(html);
     $("article.kutu").each(function () {
@@ -33,10 +36,15 @@ onMounted(() => {
         title: title,
       });
     });
-    return (latestPosts.value = dataArray);
-  });
-console.log(dataArray, "this is data array")
-  isLoading.value = false;
+    latestPosts.value = dataArray
+  })
+  .catch((error)=>{
+    console.error(error);
+  })
+  .finally(()=>{
+    isLoading.value = false;
+  })
+
 });
 </script>
 

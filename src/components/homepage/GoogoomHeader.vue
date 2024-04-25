@@ -17,18 +17,18 @@ export default {
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex justify-center gap-4 items-center text-white">
         <router-link to="/">
-          <img class="w-[7rem]" src="../../assets/googoom-logo-aq.png" alt="" />
+          <img class="w-[7rem]" src="../../assets/logo-aq.png" alt="" />
         </router-link>
         <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem]" />
         <language-switcher class="bg-[#893311] border-none rounded-lg" />
       </div>
       <div class="flex md:order-2">
         <router-link to="/">
-          <p
+          <!-- <p
             class="text-white hidden font-medium text-2xl px-5 py-2.5 text-center mr-3 md:mr-0 md:block dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Googoom
-          </p>
+          </p> -->
         </router-link>
         <button
           @click="showMenu = !showMenu"
@@ -90,13 +90,13 @@ export default {
               >{{ $t("pageHeader.termiler") }}</router-link
             >
           </li>
-          <li>
+          <!-- <li>
             <router-link
               to="#"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.soralghu") }}</router-link
             >
-          </li>
+          </li> -->
           <li>
             <router-link
               to="#"
@@ -104,42 +104,42 @@ export default {
               >{{ $t("pageHeader.korkem") }}</router-link
             >
           </li>
-          <li>
+          <!-- <li>
             <router-link
               to="#"
               class="font-medium rounded-full md:bg-blue-500 md:mx-[1rem] md:px-[1rem] md:py-2 md:hover:bg-blue-500 md:hover:bg-transparent md:hover:text-black md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.freeEastturkistan") }}</router-link
             >
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link
               to="#"
               class="font-medium rounded hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.oyuq") }}</router-link
             >
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link
               to="#"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.kakkuk") }}</router-link
             >
-          </li>
+          </li> -->
 
-          <li>
+          <!-- <li>
             <router-link
               to="#"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.tarim") }}</router-link
             >
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link
               to="#"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.ghunchilar") }}</router-link
             >
-          </li>
+          </li> -->
           <li>
             <router-link
               to="#"
