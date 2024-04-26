@@ -29,7 +29,7 @@ export default {};
       </p>
     </div>
     <h2 class="text-center flex-1 mb-2">
-      بارلىق ھوقۇق گۇگۇم تورىغا مەنسۇپ 2023-يىلى
+      بارلىق ھوقۇق گۇگۇم تورىغا مەنسۇپ 2024-يىلى
     </h2>
   </footer>
 </template>

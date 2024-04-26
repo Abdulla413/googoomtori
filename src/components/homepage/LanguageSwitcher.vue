@@ -14,6 +14,9 @@ export default {
   },
 };
 </script>
+
+
+
 <template>
   <select @change="switchLanguage">
     <option
