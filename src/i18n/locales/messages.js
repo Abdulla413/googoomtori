@@ -8,6 +8,7 @@ export default {
     about: "Who are we؟",
     support: "Support",
     contact: "Contact",
+    
   },
   uy:{
     appTitle: "گۇگۇم تورىغا خۇش كەلدىڭىز!",

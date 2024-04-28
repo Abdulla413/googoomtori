@@ -14,7 +14,6 @@
     "websites": "باغلىنىش"
 
   }  ,
-  
 
 
   "newsAgency":{
@@ -23,11 +22,18 @@
     "turkistantimes":"تۈركىستان تايمىس",
     "iuyghurnews":"ئۇيغۇر ئاگنىتلىقى"  
   },
+
+
+  "termilerPage":{
+    "write":"يازىمەن"
+
+  },
      
     
     "locale":{
       "uy":"ئۇيغۇرچە",
-      "uyl":"Uyghurche"
+      "uyl":"Uyghurche",
+      "en":"English"
     },
 
     "footer":{

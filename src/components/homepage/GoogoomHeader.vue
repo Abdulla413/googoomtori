@@ -10,6 +10,14 @@ export default {
   },
 };
 </script>
+
+<script setup>
+
+
+
+
+
+</script>
 <template>
   <nav
     class="bg-[#893311] px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
@@ -19,7 +27,11 @@ export default {
         <router-link to="/">
           <img class="w-[7rem]" src="../../assets/logo-aq.png" alt="" />
         </router-link>
-        <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem]" />
+        <div class="flex flex-col">
+          <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem] mb-2" />
+
+        </div>
+        
         <language-switcher class="bg-[#893311] border-none rounded-lg" />
       </div>
       <div class="flex md:order-2">
@@ -71,7 +83,7 @@ export default {
           </li>
           <li>
             <router-link
-              to="#"
+              to="/arishpedia"
               class="rounded font-medium hover:bg-transparent hover:text-[#00FF7F] md:p-0 md: md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.arishPedia") }}</router-link
             >
@@ -85,7 +97,7 @@ export default {
           </li>
           <li>
             <router-link
-              to="#"
+              to="/termilerpage"
               class="rounded font-medium hover:text-[#00FF7F] md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >{{ $t("pageHeader.termiler") }}</router-link
             >

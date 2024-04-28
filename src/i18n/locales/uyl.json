@@ -28,8 +28,13 @@
     
     "locale":{
       "uy":"ئۇيغۇرچە",
-      "uyl":"Uyghurche"
+      "uyl":"Uyghurche",
+      "en":"English"
     },
+    "termilerPage":{
+      "write":"Yazimen"
+    },
+       
     "notFoundPage":{
       "notFound":"Bu bet tipilmidi!",
       "viewOther":"Bu betlerning birersini ziyaret qilamsiz?"

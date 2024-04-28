@@ -9,7 +9,7 @@ const Trans = {
   },
   async switchLanguage(newLocale) {
     Trans.currentLocale = newLocale;
-    if (newLocale === "uyl") {
+    if (newLocale === "uyl" || "en") {
         document.getElementById("app").setAttribute("dir", "ltr");
       }
   },

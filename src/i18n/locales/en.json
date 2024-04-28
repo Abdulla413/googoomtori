@@ -18,10 +18,17 @@
     "support": "Support",
     "contact": "Contact"
     },
+
+    "termilerPage":{
+      "write":"Write",
+      "topics":"Topics"
+  
+    },
+       
     
     "locale":{
       "uy":"Uyghur",
       "en":"Enlish",
-      "uyl":"UYL"
+      "uyl":"Uyghurche"
     }
 }
