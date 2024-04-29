@@ -10,7 +10,7 @@ const latestPosts = ref([]);
 
 onMounted(() => {
   //   function getWebsiteData() {
-  let url = "https://www.iuyghur.com/";
+  let url = "https://uyghur.uyghurtimes.com/";
   let dataArray = [];
   axios({
     method: "get",

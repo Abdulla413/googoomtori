@@ -35,7 +35,6 @@ const router = createRouter({
       path: "/new-story",
       name:"NewStory",
       component:NewStory
-
     },
 
 

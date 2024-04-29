@@ -27,6 +27,7 @@ export default {
         $("div.home-item-list").each(function () {
           const title = $(this).find("div.home-item-title").text();
           const image = $(this).find("img").attr("src");
+          console.log(image, "this is image")
           const url = $(this).find("a").attr("href");
           const date = $(this).find("div.post-date").html();
 

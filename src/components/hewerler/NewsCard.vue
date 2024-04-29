@@ -4,6 +4,10 @@ const props = defineProps({
   post: Object,
   qanal: String,
 });
+
+// console.log(props.post.image, "this is one")
+const imageScr = props.post.image.toString().slice(0,-1)
+
 </script>
 
 <template>
@@ -12,7 +16,7 @@ const props = defineProps({
   >
     <img
       class="rounded-t-lg w-full object-cover object-center lg:h-72 md:h-48"
-      :src="`${post.image}`"
+      :src='`${imageScr}`'
       alt=""
     />
     <div class="p-3 flex flex-col justify-center items-center">

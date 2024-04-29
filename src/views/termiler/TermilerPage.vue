@@ -1,5 +1,6 @@
 <script setup>
 import TermilerHeader from '../../components/termiler/TermilerHeader.vue';
+import TermilerCard from '../../components/termiler/TermilerCard.vue';
 
 </script>
 
@@ -8,6 +9,7 @@ import TermilerHeader from '../../components/termiler/TermilerHeader.vue';
     <TermilerHeader/>
     <main>
       <h1>يېڭى تەرمىلەر</h1>
+      <TermilerCard/>
 
 
     </main>

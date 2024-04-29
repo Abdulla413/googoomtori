@@ -32,7 +32,8 @@
       "en":"English"
     },
     "termilerPage":{
-      "write":"Yazimen"
+      "write":"Yazimen",
+      "topics":"Kategoriye"
     },
        
     "notFoundPage":{
