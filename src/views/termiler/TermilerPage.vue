@@ -33,21 +33,23 @@ const allTermiler = ref({
 <template>
   <div  class="flex flex-col mx-auto mb-4 w-full h-screen">
     <TermilerHeader/>
-    <div class="flex justify-center space-x-20 p-20">
-    <main>
+    <div class="flex justify-center space-x-10 ">
+    <main class="w-2/3 m-5">
       <TermilerCard 
       :termilerData="allTermiler"
       v-for="(termiler, index) in allTermiler"
         :key="index"
         :termiler="termiler"/>
     </main>
-    <div class="border-l border-gray-300 p-5">
-      <h2>Topict</h2>
-      <p>Topic1</p>
-      <p>Topic2</p>
-      <p>Topic3</p>
-      <p>Topic4</p>
-      <p>Topic5</p>
+    <div class="flex flex-col border border-gray-300 shadow m-10 w-1/3">
+      <h2 class="text-center font-bold text-lg pt-10">Topics</h2>
+      <div class="flex space-x-5 p-5">
+          <p class="bg-gray-300 rounded-lg px-2">Politics</p>
+          <p class="bg-gray-300 rounded-lg px-2">Music</p>
+          <p class="bg-gray-300 rounded-lg px-2">Topic3</p>
+          <p class="bg-gray-300 rounded-lg px-2">Topic4</p>
+          <p class="bg-gray-300 rounded-lg px-2">Topic5</p>
+    </div>
     </div>
   </div>
     
