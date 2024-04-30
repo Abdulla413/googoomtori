@@ -1,20 +1,41 @@
 <script setup>
 
+ const props = defineProps({
+    termiler : Object
+ })
+
+ console.log(props.termiler, 'this is termiler data')
+
+
 
 </script>
 
 
 <template>
  
- 
  <router-link to="/" >
-    <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow mr-10 md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg m-10 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/public/images/003-yarkant.jpg" alt="">
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    <div class="bg-white border-t border-gray-300 mt-5">
+    <div class="flex items-center space-x-4 ">
+        <div>
+        <img v-if="termiler.photo" :src="termiler.photo" alt="Author Image" class="rounded-full h-12 w-12"> 
+        <font-awesome-icon v-else :icon="['fas', 'user']" class="text-[1.5rem] m-5"/>
+        </div>
+        <p class="mt-2 text-gray-700 ">{{ termiler.author }}</p>
+        <p class="mt-2 text-gray-700">12/11/2023{{ }}</p>
+    </div>
+    <div class="flex items-center md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover w-full rounded-t-lg m-10 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" :src='`${termiler.image}`' alt="">
+        <div class="flex flex-col p-4">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{termiler.title}}</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ termiler.content }}</p>
         </div>
     </div>
+    <div class="flex items-center space-x-4 ">
+        <div></div>
+        <p class="m-2 text-gray-700 bg-gray-200 rounded-lg pr-3 pl-3 mt-3 ">Topics</p>
+        <p class="m-2 text-gray-700">4 min read</p>
+    </div>
+</div>
     
 </router-link>
 
