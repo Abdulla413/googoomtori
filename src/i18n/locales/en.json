@@ -13,6 +13,25 @@
   "websites": "Baghlinish"
 
   },
+
+  "register":{
+    "name":"User Name",
+    "header":"Create your account",
+    "email":"Your email",
+    "password":"Password",
+    "confirmPassword":"Confirm password",
+    "accept":"I accept the",
+    "term":"Terms and Conditions",
+    "button":"Creat an account"
+  },
+  "signin":{
+    "header":"Sign in to your account",
+    "email":"Your email",
+    "password":"Password",
+    "button":"Sign In"
+  },
+
+
     "pageFooter":{
     "about": "Who are we?",
     "support": "Support",

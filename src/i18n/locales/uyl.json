@@ -12,6 +12,22 @@
     "termiler": "Termiler",
     "websites": "Baghlinish"
 },
+"register":{
+  "name":"Abunit Ismi",
+  "header":"Hesab Eching",
+  "email":"E'mektub",
+  "password":"Im",
+  "confirmPassword":"Imni Jezimleshturmek",
+  "accept":"Qoshilimen",
+  "term":"Madda we Shertlerge",
+  "button":"Hesab Achmaq"
+},
+"signin":{
+  "header":"Hisabqa Kerish",
+  "email":"E'mektubingiz",
+  "password":"Im",
+  "button":"Kerish"
+},
 
 "newsAgency":{
   "googoomnews":"Googoom Xewerliri",

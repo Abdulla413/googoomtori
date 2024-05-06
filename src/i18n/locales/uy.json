@@ -13,8 +13,26 @@
     "termiler": "تەرمىلەر",
     "websites": "باغلىنىش"
 
-  }  ,
+  },
 
+  "register":{
+    "name":"ئابۇنىت ئىسمى",
+    "header":"ھېساب ئىچىڭ",
+    "email":"ئې مەكتۇبىڭىز",
+    "password":"ئىم",
+    "confirmPassword":"ئىمنى جەزىملەشتۈرۈش",
+    "accept":"قوشۇلىمەن",
+    "term":"ماددا ۋە شەرتلەرگە",
+    "button":"ھېساب ئېچىش"
+  },
+
+  
+  "signin":{
+    "header":"Sign in to your account",
+    "email":"Your email",
+    "password":"Password",
+    "button":"Sign In"
+  },
 
   "newsAgency":{
     "googoomnews":"گۇگۇم خەۋەرلىرى",

@@ -9,13 +9,14 @@ import {
   faPenToSquare,
   faUser,
   faXmark,
+  faUpload
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import "./assets/main.css";
 import i18n from "./i18n/index";
 
-library.add(faHatWizard, faBars, faUser, faPenToSquare, faXmark);
+library.add(faHatWizard, faBars, faUser, faPenToSquare, faXmark, faUpload);
 
 const app = createApp(App);
 

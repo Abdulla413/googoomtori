@@ -8,11 +8,26 @@ import TurkistanTimes from "@/views/hewerler/TurkistanTimes.vue";
 import NotFound from "@/views/NotFound.vue";
 import TermilerPage from "@/views/termiler/TermilerPage.vue"
 import NewStory from "@/views/termiler/NewStory.vue"
+import TermilerContent from "@/views/termiler/TermilerContent.vue"
+import Register from "@/views/auth/Register.vue"
+import Signin from "@/views/auth/Signin.vue"
+
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path:"/register",
+      name:"Register",
+      component:Register
+    },
+
+    {path:"/signin",
+    name:"Signin",
+    component:Signin      
+    },
+
     {
       path: "/",
       name: "HomeView",
@@ -36,7 +51,11 @@ const router = createRouter({
       name:"NewStory",
       component:NewStory
     },
-
+    {
+      path:"/termilercontent",
+      name:"TermilerContent",
+      component:TermilerContent
+    },
 
 
     {

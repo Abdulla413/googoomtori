@@ -4,8 +4,6 @@
     termiler : Object
  })
 
- console.log(props.termiler, 'this is termiler data')
-
 
 
 </script>
@@ -21,7 +19,7 @@
         <font-awesome-icon v-else :icon="['fas', 'user']" class="text-[1.5rem] m-5"/>
         </div>
         <p class="mt-2 text-gray-700 ">{{ termiler.author }}</p>
-        <p class="mt-2 text-gray-700">12/11/2023{{ }}</p>
+        <p class="mt-2 text-gray-700">{{termiler.date }}</p>
     </div>
     <div class="flex items-center md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <img class="object-cover w-full rounded-t-lg m-10 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" :src='`${termiler.image}`' alt="">
@@ -33,7 +31,7 @@
     <div class="flex items-center space-x-4 ">
         <div></div>
         <p class="m-2 text-gray-700 bg-gray-200 rounded-lg pr-3 pl-3 mt-3 ">Topics</p>
-        <p class="m-2 text-gray-700">4 min read</p>
+        <p class="m-2 text-gray-700">{{ termiler.duration }} min read</p>
     </div>
 </div>
     
