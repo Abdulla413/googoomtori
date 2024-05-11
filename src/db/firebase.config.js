@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from 'firebase/firestore'
-import { getAuth } from "firebase/auth";
+import { connectAuthEmulator, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY ,
@@ -20,6 +20,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app)
  const db = getFirestore(app);
+ const storage = getStorage(app)
+ connectAuthEmulator(auth, "http://localhost:9099");
 
- export {db, auth }
+ export {db, auth, storage }
 

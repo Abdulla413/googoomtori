@@ -1,23 +1,13 @@
-<script>
-import LanguageSwitcher from "@/components/homepage/LanguageSwitcher.vue";
-
-export default {
-  components: { LanguageSwitcher },
-  data() {
-    return {
-      showMenu: false,
-    };
-  },
-};
-</script>
-
 <script setup>
+import LanguageSwitcher from "@/components/homepage/LanguageSwitcher.vue";
+import ProfileIcon from "./ProfileIcon.vue";
+import {ref} from "vue"
 
 
-
-
+const showMenu = ref(false)
 
 </script>
+
 <template>
   <nav
     class="bg-[#893311] px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
@@ -27,9 +17,8 @@ export default {
         <router-link to="/">
           <img class="w-[7rem]" src="../../assets/logo-aq.png" alt="" />
         </router-link>
-        <div class="flex flex-col">
-          <font-awesome-icon icon="fa-solid fa-user" class="text-[2rem] mb-2" />
-
+        <div class="">
+          <ProfileIcon/>
         </div>
         
         <language-switcher class="bg-[#893311] border-none rounded-lg" />

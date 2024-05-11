@@ -2,6 +2,10 @@
 import TermilerHeader from '@/components/termiler/TermilerHeader.vue';
 import { db } from "@/db/firebase.config.js";
 import { ref } from 'vue';
+import { collection, addDoc } from "firebase/firestore"; 
+import { doc } from 'firebase/firestore/lite';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 
 const formData = ref({
@@ -12,12 +16,6 @@ const formData = ref({
   fileInput:null
 });
 
-const handleSubmit = ()=>{
-
-  alert('i am submit form')
-  
-}
-
 let fileName = ref('')
 
 const onPickup = ()=>{
@@ -26,9 +24,37 @@ const onPickup = ()=>{
 const onFilepicked =  (e)=>{
 
   const files = e.target.files
-  
   fileName.value = files[0].name
+
   }
+
+
+
+const handleSubmit = async ()=>{
+  
+
+  try {
+  const docRef = await addDoc(collection(db, "termiler"), {
+          title:'Where is East Turkistan?',
+          topic:'Politic',
+          date:'12/5/2024',
+          duration:'5',
+          content:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora molestiae cum cupiditate, non dicta mollitia deserunt sint doloremque accusantium ad aut nesciunt exercitationem pariatur iste, debitis magnam maxime sequi perferendis!'
+  });
+
+  console.log("Document written with ID: ", docRef.id);
+  if(docRef.id){
+    toast.success('Your story successfully published.')
+    
+  }
+} catch (e) {
+  console.log(e, 'this is error in new story')
+}
+
+  
+}
+
+
 
 
 
@@ -74,7 +100,6 @@ const onFilepicked =  (e)=>{
 <template>
     
         <TermilerHeader @submit-form="handleSubmit"/>
-
 <div >
   
 <section class="bg-gray-100">

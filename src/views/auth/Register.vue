@@ -1,49 +1,47 @@
 <script setup>
-import {ref} from "vue"
+import {ref, reactive, registerRuntimeCompiler} from "vue"
 import LanguageSwitcher from '@/components/homepage/LanguageSwitcher.vue'
-import {db} from "@/db/firebase.config.js"
+import { db } from "../../db/firebase.config"
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useRouter } from 'vue-router';
-
-import {
-  Input,
-  Ripple,
-  initTWE,
-} from "tw-elements";
-
-initTWE({ Input, Ripple});
+import { useRouter, useRoute } from 'vue-router'
+import { useStoreAuth } from "../../stores/user/index";
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 
+const storeAuth = useStoreAuth()
+const router = useRouter();
+const isValid = ref(true)
 
-const formData = ref({
-    name:'',
-    email : "",
-    password: "",
-
+const credential = reactive({
+    name:'', 
+    email:'',
+    password:'',
+    confirmpassword:''
 })
 
-const {name, email, password} = formData
-
-const onSubmit = async ()=>{
-
-  try {
-    const auth = getAuth()
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    const user = userCredential.user
-    updateProfile(auth.currentUser, {
-      displayName:name
-    })
-
-    const router = useRouter();
-    router.push('/');
-
-  } catch (error) {
-
-    
-  }
-
+const passwordValidation = ()=>{
+  const passwordPettern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  isValid.value = passwordPettern.test(credential.password)
 }
 
+
+
+const onSubmit = ()=>{
+
+    if(!credential.email){
+      toast.error('Please enter an Email')
+    }else if(!credential.password){
+      toast.error('Please enter the Password')
+    }else if (credential.password != credential.confirmpassword){
+      toast.error('Password not macht')
+    } else if(!isValid.value){
+      toast.error('Please enter the valid password')
+    }else{
+      storeAuth.registerUser(credential)
+    
+    }
+}
 
 
 </script>
@@ -77,71 +75,69 @@ const onSubmit = async ()=>{
                 {{ $t("register.header") }}
               </h1>
         <form @submit.prevent="onSubmit"> 
-          <!--name input-->
+         
              <!-- User Name input-->
-             <div class="relative mb-6" data-twe-input-wrapper-init>
+             <div class="relative mb-6"  >
             <input
               type="text"
-              v-model="formData.name"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
-              id="exampleFormControlInput3"
+              v-model="credential.name"
+              class="peer block bg-blue-100 min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
               placeholder="User Name" />
             <label
-              for="exampleFormControlInput3"
+              
               class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               > {{ $t("register.name") }}
             </label>
           </div>
           <!-- Email input -->
-          <div class="relative mb-6" data-twe-input-wrapper-init>
+          <div class="relative mb-6"  >
             <input
               type="email"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
-              id="exampleFormControlInput3"
-              v-model="formData.email"
+              class="peer block bg-blue-100 min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+              v-model="credential.email"
+              
              />
             <label
-              for="exampleFormControlInput3"
+              
               class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               >{{ $t("register.email") }}
             </label>
+            
           </div>
 
           <!-- Password input -->
-          <div class="relative mb-6" data-twe-input-wrapper-init>
-            <input
-              type="password"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
-              id="exampleFormControlInput33"
-              v-model="formData.password"
-              />
-            <label
-              for="exampleFormControlInput33"
-              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
-              >{{ $t("register.password") }}
-            </label>
-          </div>
-          <div class="relative mb-6" data-twe-input-wrapper-init>
+          <div class="relative mb-6"  >
             <input
               type="password"
               class="peer block bg-blue-100 min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
-              id="exampleFormControlInput33"
+              @input='passwordValidation'
+              v-model="credential.password"
+              />
+              
+            <label class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
+              >{{ $t("register.password") }}
+            </label>
+            <span v-if="!isValid" class="text-red-400">Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.</span>
+          </div>
+          <div class="relative mb-6"  >
+            <input
+              type="password"  
+              class="peer block bg-blue-100 min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+              v-model="credential.confirmpassword"
               />
             <label
-              for="exampleFormControlInput33"
+              
               class="pointer-events-none  absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               > {{ $t("register.confirmPassword") }}
             </label>
           </div>
 
           <!-- Submit button -->
-          <button
-            type="submit"
-            class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
-            data-twe-ripple-init
-            data-twe-ripple-color="light">
-            {{ $t("register.button") }}
-          </button>
+          <button type="submit" class="block w-full px-5 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+{{ $t("register.button") }}
+
+</button>
         </form>
       </div>
     </div>
