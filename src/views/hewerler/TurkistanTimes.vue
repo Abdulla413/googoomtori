@@ -22,7 +22,6 @@ export default {
         url: url,
       }).then(function (response) {
         const html = response.data;
-        console.log(html);
         let $ = cheerio.load(html);
         $("div.home-item-list").each(function () {
           const title = $(this).find("div.home-item-title").text();

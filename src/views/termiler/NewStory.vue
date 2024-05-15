@@ -1,22 +1,30 @@
 <script setup>
 import TermilerHeader from '@/components/termiler/TermilerHeader.vue';
+import { getStorage, uploadBytesResumable, getDownloadURL, ref } from "firebase/storage";
+import SpinnerCom from "@/components/icons/SpinnerCom.vue";
 import { db } from "@/db/firebase.config.js";
-import { ref } from 'vue';
-import { collection, addDoc } from "firebase/firestore"; 
+import { ref as vueRef, reactive } from 'vue';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"; 
 import { doc } from 'firebase/firestore/lite';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 
-const formData = ref({
-  title: 'a',
-  content: 'b',
-  topic: 'c',
-  duration:'10',
+
+
+const isLoading = vueRef(false)
+
+const formData = reactive({
+  title: '',
+  content: '',
+  topic: '',
+  duration:'',
   fileInput:null
 });
 
-let fileName = ref('')
+const fileName = vueRef('')
+
+
 
 const onPickup = ()=>{
   fileInput.click()     
@@ -31,24 +39,37 @@ const onFilepicked =  (e)=>{
 
 
 const handleSubmit = async ()=>{
+
   
-
+  
   try {
-  const docRef = await addDoc(collection(db, "termiler"), {
-          title:'Where is East Turkistan?',
-          topic:'Politic',
-          date:'12/5/2024',
-          duration:'5',
-          content:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora molestiae cum cupiditate, non dicta mollitia deserunt sint doloremque accusantium ad aut nesciunt exercitationem pariatur iste, debitis magnam maxime sequi perferendis!'
-  });
 
-  console.log("Document written with ID: ", docRef.id);
-  if(docRef.id){
+    isLoading=true
+
+    const formDataCopy = {...formData} 
+    formDataCopy.date = serverTimestamp()
+    const docRef = await addDoc(collection(db, "termiler"), formDataCopy);
+
+  if(docRef){
     toast.success('Your story successfully published.')
-    
   }
+
+  const clearFormData =()=> {
+  formData.title = '';
+  formData.content = '';
+  formData.topic = '';
+  formData.duration = '';
+  formData.fileInput = null;
+  }
+  
+  clearFormData()
+
+  isLoading.value = false
+  
 } catch (e) {
-  console.log(e, 'this is error in new story')
+  
+  toast.error('Some thing went wrong')
+  isLoading.value = false
 }
 
   

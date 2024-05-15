@@ -39,6 +39,7 @@ const onSubmit = ()=>{
       toast.error('Please enter the valid password')
     }else{
       storeAuth.registerUser(credential)
+      // router.push("/")
     
     }
 }
@@ -114,7 +115,8 @@ const onSubmit = ()=>{
               v-model="credential.password"
               />
               
-            <label class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
+            <label
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               >{{ $t("register.password") }}
             </label>
             <span v-if="!isValid" class="text-red-400">Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be at least 8 characters long.</span>

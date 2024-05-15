@@ -59,7 +59,7 @@ const router = createRouter({
       component:NewStory
     },
     {
-      path:"/termilercontent",
+      path:"/termiler/:id",
       name:"TermilerContent",
       component:TermilerContent
     },

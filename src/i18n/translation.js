@@ -9,8 +9,11 @@ const Trans = {
   },
   async switchLanguage(newLocale) {
     Trans.currentLocale = newLocale;
-    if (newLocale === "uyl" || "en") {
+    if (newLocale === "uyl") {
         document.getElementById("app").setAttribute("dir", "ltr");
+      }else {
+        document.getElementById("app").setAttribute("dir", "rtl");
+        
       }
   },
 };

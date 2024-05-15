@@ -2,15 +2,19 @@
 
 import {ref, computed, reactive} from "vue";
 import {useStoreAuth} from "@/stores/user/index.js"
+import { useRouter } from "vue-router";
 
 
 
+
+const router = useRouter()
 const storeAuth = useStoreAuth()
 const register = ref(false)
-const formData = reactive({
-    email:'email@email.com',
-    password:'123456'
+const credential = reactive({
+    email:'',
+    password:''
 })
+
 
 
 const formTitle = computed(()=>{
@@ -18,23 +22,22 @@ const formTitle = computed(()=>{
 })
 
 
-
-
 // submit 
 
 const onSubmit = ()=>{
     
-    if(!formData.email || !formData.password){
+    if(!credential.email || !credential.password){
         
         alert('Please enter email and password')
     }else {
-        if(register.value){
-            console.log(register.value)
-            storeAuth.registerUser(formData)
-        }else{
-            console.log('i am sign in know', formData )
-        }
+        console.log('i am sign in know', credential )
+        
+        
+        
+        router.push('/')
     }
+
+   
 
 
 
@@ -98,7 +101,7 @@ const onSubmit = ()=>{
                             type="email"
                             placeholder="Email"
                             required
-                            v-model="formData.email"
+                            v-model="credential.email"
                         />
                         </div>
                         <div>
@@ -109,7 +112,7 @@ const onSubmit = ()=>{
                             type="password"
                             placeholder="Password"
                             required
-                            v-model="formData.password"
+                            v-model="credential.password"
                         />
                         </div>
                         <a

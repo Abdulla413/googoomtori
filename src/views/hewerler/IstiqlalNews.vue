@@ -6,7 +6,7 @@ import WelcomeNews from "@/components/hewerler/WelcomeNews.vue";
 import FooterCom from "@/components/homepage/FooterCom.vue";
 import { onMounted, ref } from "vue";
 import NewsHeader from "../../components/hewerler/NewsHeader.vue";
-import SpinnerCom from "../../components/SpinnerCom.vue";
+import SpinnerCom from "../../components/icons/SpinnerCom.vue";
 
 const latestPosts = ref([]);
 const isLoading = ref(false);
