@@ -61,7 +61,7 @@ import 'vue3-toastify/dist/index.css';
 </script>
 
 <template>
-  <div  class="flex flex-col mx-auto mb-4 w-full h-screen">
+  <div  class="w-full h-screen flex flex-col mx-auto mb-4 ">
     <TermilerHeader/>
     <div v-if="isLoading" class="flex justify-center items-center w-full m-5 h-screen ">
       <SpinnerCom />

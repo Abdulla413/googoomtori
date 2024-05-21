@@ -1,51 +1,98 @@
 <script setup>
+import { ref } from 'vue'
+import { defineProps } from 'vue'
 
- const props = defineProps({
-    termiler : Object
- })
+const props = defineProps({
+  termiler: Object
+})
 
- console.log(props.termiler, 'this is termiler inside porosp', props.termiler.id, 'this is id')
+const showMenu = ref(false);
 
+const handleLike = () => {
+  console.log('Liked')
+}
 
+const handleDislike = () => {
+  console.log('Disliked')
+}
 
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value;
+}
 
+const followAuthor = () => {
+  console.log('Follow Author clicked')
+  showMenu.value = false;
+}
+
+const reportStory = () => {
+  console.log('Report This Story clicked')
+  showMenu.value = false;
+}
 </script>
 
-
 <template>
- 
- <div >
-    <div class="bg-white border-t border-gray-300 mt-5">
-
-    <div class="flex items-center space-x-4 ">
+  <div class="flex justify-between items-center bg-white border border-gray-300 mt-5 rounded-lg shadow-md overflow-hidden relative">
+    <!-- Left Side: Author Info and Content -->
+    <div class="flex-1 p-6">
+      <!-- Author Info -->
+      <div class="flex items-center space-x-4 mb-4">
         <div>
-        <img v-if="termiler.data.photo" :src="termiler.image" alt="Author Image" class="rounded-full h-12 w-12"> 
-        <img v-else src="/public/images/003-yarkant.jpg" alt="Author Image" class="rounded-full h-12 w-12"> 
-        
+          <img v-if="termiler.data.photo" :src="termiler.image" alt="Author Image" class="rounded-full h-12 w-12">
+          <img v-else src="/images/003-yarkant.jpg" alt="Author Image" class="rounded-full h-12 w-12">
         </div>
-        <p class="mt-2 text-gray-700 ">{{ termiler.data.author }}</p>
-        <p class="mt-2 text-gray-700">{{termiler.data.date }}</p>
+        <div>
+          <p class="text-gray-700 font-medium">{{ termiler.data.author }}</p>
+          <p class="text-gray-500 text-sm">{{ termiler.data.date }}</p>
+        </div>
+      </div>
+
+      <!-- Title and Content -->
+      <router-link :to="'/termiler/' + termiler.id" class="block mb-4 no-underline hover:underline">
+        <h5 class="text-2xl font-bold tracking-tight text-gray-900 mb-2">{{ termiler.data.title }}</h5>
+        <p class="text-gray-700 line-clamp-3">{{ termiler.data.content }}</p>
+      </router-link>
+
+      <!-- Bottom Section: Topic, Reading Time, Like, Dislike, Kebab Menu -->
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <p class="text-gray-700 bg-gray-200 rounded-lg px-3 py-1">{{ termiler.data.topic }}</p>
+          <p class="text-gray-700">{{ termiler.data.duration }} min read</p>
+          <button @click="handleLike" class="text-gray-600 hover:text-green-600">
+            <font-awesome-icon icon="fa-solid fa-thumbs-up" />
+          </button>
+          <button @click="handleDislike" class="text-gray-600 hover:text-red-600">
+            <font-awesome-icon icon="fa-solid fa-thumbs-down" />
+          </button>
+        </div>
+        <div class="relative">
+          <button @click="toggleMenu" class="text-gray-600 hover:text-gray-800">
+            <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" />
+          </button>
+          <div v-if="showMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-50">            <ul class="z-50">
+              <li @click="followAuthor" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Follow Author</li>
+              <li @click="reportStory" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Report This Story</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <router-link :to="'/termiler/'+ termiler.id" class="flex items-center md:flex-row dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg m-10 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" :src='`${termiler.image}`' alt="">
-        <div class="flex flex-col items-end">
-            
-            <div class="flex flex-col grow p-6">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{termiler.data.title}}</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ termiler.data.content.slice(0,300) }}...</p>
-            </div>
-            <button class="bg-blue-500 w-[150px] h-[30px] ml-[50px] rounded-lg mb-4 text-white">Read More</button>
-</div>
+
+    <!-- Right Side: Image -->
+    <router-link :to="'/termiler/' + termiler.id">
+      <div class="flex justify-center items-center w-36 h-36 mx-5">
+          <img class="object-cover w-full h-full" :src="termiler.data.imageUrl" alt="Content Image">
+      </div>
     </router-link>
-    <div class="flex items-center space-x-4 ">
-        <div></div>
-        <p class="m-2 text-gray-700 bg-gray-200 rounded-lg pr-3 pl-3 mt-3 ">{{ termiler.data.topic }}</p>
-        <p class="m-2 text-gray-700">{{ termiler.data.duration }} min read</p>
-    </div>
-</div>
     
-</div>
-
-
-
+  </div>
 </template>
+
+<style scoped>
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

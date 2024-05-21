@@ -14,6 +14,21 @@ module.exports = {
 
     container: {
       center: true,
+      padding: {
+        DEFAULT: '1rem', // Default padding for all screen sizes
+        sm: '2rem', // Padding for small screens
+        lg: '4rem', // Padding for large screens
+        xl: '5rem', // Padding for extra-large screens
+        '2xl': '6rem', // Padding for 2x extra-large screens
+      },
+      screens: {
+        sm: '640px', // Container width for small screens
+        md: '768px', // Container width for medium screens
+        lg: '1024px', // Container width for large screens
+        xl: '1280px', // Container width for extra-large screens
+        '2xl': '1536px', // Container width for 2x extra-large screens
+      },
+      
     },
 
     content: [
@@ -64,6 +79,15 @@ module.exports = {
       'Noto Color Emoji'
     ]
 
+  },
+  fontSize: {
+    sm: '0.8rem',
+    base: '1rem',
+    xl: '1.25rem',
+    '2xl': '1.563rem',
+    '3xl': '1.953rem',
+    '4xl': '2.441rem',
+    '5xl': '3.052rem',
   },
   plugins: [],
 

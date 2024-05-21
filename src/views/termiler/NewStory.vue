@@ -1,79 +1,133 @@
 <script setup>
 import TermilerHeader from '@/components/termiler/TermilerHeader.vue';
-import { getStorage, uploadBytesResumable, getDownloadURL, ref } from "firebase/storage";
+import { ref , uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import SpinnerCom from "@/components/icons/SpinnerCom.vue";
-import { db } from "@/db/firebase.config.js";
+import { db, storage } from "@/db/firebase.config.js";
 import { ref as vueRef, reactive } from 'vue';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"; 
 import { doc } from 'firebase/firestore/lite';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 
-const isLoading = vueRef(false)
+
 
 const formData = reactive({
   title: '',
   content: '',
   topic: '',
   duration:'',
-  fileInput:null
 });
 
-const fileName = vueRef('')
+const isLoading = vueRef(false);
+const fileName = vueRef('');
+const fileInput = vueRef(null)
 
-
+let selected = vueRef(null)
 
 const onPickup = ()=>{
-  fileInput.click()     
+  fileInput.value.click()     
 }
-const onFilepicked =  (e)=>{
 
+const onFilepicked =  (e)=>{
   const files = e.target.files
   fileName.value = files[0].name
+  selected.value = files[0]
+}
 
-  }
+   
+// New-story form submition
 
+const handleSubmit = async () =>{
 
-
-const handleSubmit = async ()=>{
-
-  
-  
   try {
+    isLoading.value = true
+    
+    // Upload image to Sorage
 
-    isLoading=true
+   
+    if (selected.value){
 
-    const formDataCopy = {...formData} 
-    formDataCopy.date = serverTimestamp()
-    const docRef = await addDoc(collection(db, "termiler"), formDataCopy);
+      const imageName = `termiler-${fileName.value}-${uuidv4()}`
+      const storageRef = ref(storage, 'termilerImages/'+ imageName);
+      const uploadTask = uploadBytesResumable(storageRef, selected.value);
 
-  if(docRef){
-    toast.success('Your story successfully published.')
+            uploadTask.on('state_changed', 
+  (snapshot) => {
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+    }
+  }, 
+  (error) => {
+          // Handle unsuccessful uploads
+          toast.error('Upload Failed')
+          console.error('Error uploading file: ', error);
+        },
+        () => {
+          // Handle successful upload
+          toast.success('Upload completed successfully')
+          console.log('Upload completed successfully');
+          // Get the download URL of the uploaded file
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            
+            console.log('Image URL: ', downloadURL,);
+            
+            // Add imageUrl to formData before saving to Firestore
+            // formData.value.imageUrl = imageUrl;
+            
+            // Add data to Firestore
+            const copyFormData = {...formData}
+
+            copyFormData.imageUrl = downloadURL
+
+            console.log(copyFormData, 'copy of formdata')
+
+          
+            addDoc(collection(db, 'termiler'), copyFormData).then(() => {
+              console.log('Document successfully written to Firestore');
+              // Reset form data and file input
+              formData.value = {
+                title: '',
+                content: '',
+                duration: '',
+                topic: ''
+              };
+              fileName.value = '';
+              fileInput.value.value = ''; // Reset file input
+            }).catch((error) => {
+              console.error('Error adding document to Firestore: ', error);
+            });
+          }).catch((error) => {
+            console.error('Error getting download URL: ', error);
+          });
+        }
+      );
+    }
+  } catch (error) {
+    console.error('Error adding document: ', error);
   }
+};
 
-  const clearFormData =()=> {
-  formData.title = '';
-  formData.content = '';
-  formData.topic = '';
-  formData.duration = '';
-  formData.fileInput = null;
-  }
-  
-  clearFormData()
 
-  isLoading.value = false
-  
-} catch (e) {
-  
-  toast.error('Some thing went wrong')
-  isLoading.value = false
-}
+const removeMultiUpload = () => {
+  // Clear the selected file and file name
+  fileName.value = '';
+  fileInput.value.value = ''; // Reset file input
+};
 
-  
-}
+
+
+
 
 
 
@@ -179,7 +233,7 @@ const handleSubmit = async ()=>{
           <div class="container mx-auto h-full flex flex-col justify-center items-center">
         <div id="images-container"></div>
         <div class="flex w-full justify-center">
-            <div id="multi-upload-button"
+            <div id="single-upload-button"
                  @click="onPickup" 
                  class="inline-flex items-center px-4 py-2 bg-gray-600 border border-gray-600 rounded-l font-semibold cursor-pointer text-sm text-white tracking-widest hover:bg-gray-500 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition ">
                 Click to browse
@@ -187,15 +241,15 @@ const handleSubmit = async ()=>{
             <div class="w-4/12 lg:w-3/12 border border-gray-300 rounded-r-md flex items-center justify-between"
             >
                 <span  v-if="fileName" class="p-2">{{ fileName }}</span>
-                <span  v-else id="multi-upload-text" class="p-2">Pick image</span>
+                <span  v-else id="single-upload-text" class="p-2">Pick image</span>
 
-                <button id="multi-upload-delete" class="hidden" onclick="removeMultiUpload()">
+                 <button id="single-upload-delete" :class="{'hidden':!fileName, 'block':fileName}" @click.prevent="removeMultiUpload">
                     <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-red-700 w-3 h-3"
                          viewBox="0 0 320 512">
                         <path
                                 d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/>
                     </svg>
-                </button>
+                </button> 
             </div>
         </div>
 

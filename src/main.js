@@ -9,14 +9,36 @@ import {
   faPenToSquare,
   faUser,
   faXmark,
-  faUpload
+  faUpload,
+  faThumbsUp,
+  faEllipsisVertical,
+  faThumbsDown,
+  faComment,
+  faShare
+  
+  // fa-thumbs-down
+  
+
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import "./assets/main.css";
 import i18n from "./i18n/index";
 
-library.add(faHatWizard, faBars, faUser, faPenToSquare, faXmark, faUpload);
+
+library.add( faHatWizard,
+   faBars,
+   faUser,
+   faPenToSquare, 
+   faXmark,
+  faUpload,
+  faThumbsUp, 
+  faEllipsisVertical,  
+  faThumbsDown, 
+  faComment, 
+  faShare
+
+);
 
 const app = createApp(App);
 
