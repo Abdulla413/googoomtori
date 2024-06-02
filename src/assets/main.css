@@ -1,5 +1,10 @@
 /*  */
 @import './base.css';
+@import './custom.css';
+/* main.css */
+@import 'flowbite';
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

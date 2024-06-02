@@ -12,7 +12,7 @@ export default {
 </script>
 <template>
   <nav
-    class="bg-[#893311] font-alkatip_t px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+    class="bg-[#893311]   px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
   >
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex justify-center gap-4 items-center text-white">

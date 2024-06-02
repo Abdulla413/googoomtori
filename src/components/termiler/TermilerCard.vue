@@ -1,12 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   termiler: Object
 })
 
-const showMenu = ref(false);
+const isVisible = ref(false);
+
+
+
+
+
 
 const handleLike = () => {
   console.log('Liked')
@@ -17,7 +22,7 @@ const handleDislike = () => {
 }
 
 const toggleMenu = () => {
-  showMenu.value = !showMenu.value;
+  isVisible.value = !isVisible.value
 }
 
 const followAuthor = () => {
@@ -29,6 +34,16 @@ const reportStory = () => {
   console.log('Report This Story clicked')
   showMenu.value = false;
 }
+
+
+
+// formating the date
+
+const options = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
 </script>
 
 <template>
@@ -36,14 +51,14 @@ const reportStory = () => {
     <!-- Left Side: Author Info and Content -->
     <div class="flex-1 p-6">
       <!-- Author Info -->
-      <div class="flex items-center space-x-4 mb-4">
+      <div class="flex items-center gap-3 mb-4">
         <div>
           <img v-if="termiler.data.photo" :src="termiler.image" alt="Author Image" class="rounded-full h-12 w-12">
           <img v-else src="/images/003-yarkant.jpg" alt="Author Image" class="rounded-full h-12 w-12">
         </div>
         <div>
           <p class="text-gray-700 font-medium">{{ termiler.data.author }}</p>
-          <p class="text-gray-500 text-sm">{{ termiler.data.date }}</p>
+          <p class="text-gray-500 text-sm ">{{ termiler.data.date?.toDate().toLocaleDateString('en-US', options) }}</p>
         </div>
       </div>
 
@@ -55,9 +70,9 @@ const reportStory = () => {
 
       <!-- Bottom Section: Topic, Reading Time, Like, Dislike, Kebab Menu -->
       <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <p class="text-gray-700 bg-gray-200 rounded-lg px-3 py-1">{{ termiler.data.topic }}</p>
-          <p class="text-gray-700">{{ termiler.data.duration }} min read</p>
+        <div class="flex items-center gap-3">
+          <p class="text-gray-700 bg-gray-200 rounded-lg px-3">{{ termiler.data.topic }}</p>
+          <p class="text-gray-700">{{ termiler.data.readingTime}} min read</p>
           <button @click="handleLike" class="text-gray-600 hover:text-green-600">
             <font-awesome-icon icon="fa-solid fa-thumbs-up" />
           </button>
@@ -65,15 +80,16 @@ const reportStory = () => {
             <font-awesome-icon icon="fa-solid fa-thumbs-down" />
           </button>
         </div>
-        <div class="relative">
+        <div class="relative z-10">
           <button @click="toggleMenu" class="text-gray-600 hover:text-gray-800">
             <font-awesome-icon icon="fa-solid fa-ellipsis-vertical" />
           </button>
-          <div v-if="showMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-50">            <ul class="z-50">
+          <div v-if="isVisible" class="absolute left-2 top-[-70px] mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+            <ul class="">
               <li @click="followAuthor" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Follow Author</li>
               <li @click="reportStory" class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Report This Story</li>
             </ul>
-          </div>
+        </div>
         </div>
       </div>
     </div>

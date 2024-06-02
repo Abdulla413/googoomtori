@@ -5,7 +5,7 @@ import GoogoomHeader from "@/components/homepage/GoogoomHeader.vue";
 
 <template>
   <div
-    class="flex flex-col mx-auto mb-4 justify-center h-screen font-alkatip_t"
+    class="flex flex-col mx-auto mb-4 justify-center h-screen"
   >
     <googoom-header />
 
@@ -18,13 +18,13 @@ import GoogoomHeader from "@/components/homepage/GoogoomHeader.vue";
         <img
           src="../assets/shiir1.png"
           alt="Googoom shir1"
-          class="w-4/5 md:w-[450px]"
+          class="w-[350px] w-3/5 md:w-4/5 md:w-[450px]"
         />
 
         <img
           src="../assets/shiir2.png"
           alt="Googoom shir2"
-          class="w-4/5 md:w-[450px]"
+          class="w-[350px]  w-3/5 md:w-4/5 md:w-[450px] "
         />
       </div>
 

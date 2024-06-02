@@ -3,7 +3,7 @@ export default {};
 </script>
 <template>
   <footer
-    class="flex flex-col bg-gray-100 items-center font-alkatip_t lg:text-xl md:text-xl"
+    class="flex flex-col bg-gray-100 items-center   lg:text-xl md:text-xl"
   >
     <div class="flex-none p-2 flex gap-3">
       <p>

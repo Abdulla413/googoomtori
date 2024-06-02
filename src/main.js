@@ -14,7 +14,12 @@ import {
   faEllipsisVertical,
   faThumbsDown,
   faComment,
-  faShare
+  faShare,
+  faRightToBracket,
+  faRightFromBracket,
+  faCircleXmark,
+  faFilePen
+
   
   // fa-thumbs-down
   
@@ -36,8 +41,11 @@ library.add( faHatWizard,
   faEllipsisVertical,  
   faThumbsDown, 
   faComment, 
-  faShare
-
+  faShare,
+  faCircleXmark,
+  faRightToBracket,
+  faRightFromBracket,
+  faFilePen,
 );
 
 const app = createApp(App);

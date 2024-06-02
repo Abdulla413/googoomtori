@@ -25,6 +25,7 @@ const formData = reactive({
 const isLoading = vueRef(false);
 const fileName = vueRef('');
 const fileInput = vueRef(null)
+const isValid = vueRef(true)
 
 let selected = vueRef(null)
 
@@ -38,6 +39,14 @@ const onFilepicked =  (e)=>{
   selected.value = files[0]
 }
 
+
+const validTopic = () =>{
+  
+  const uyghurRegex =/^[\u0620-\u06FF\uFB50-\uFDFD\uFE70-\uFEFF\s]*$/;
+  
+ isValid.value = uyghurRegex.test(formData.topic)
+}
+
    
 // New-story form submition
 
@@ -45,6 +54,7 @@ const handleSubmit = async () =>{
 
   try {
     isLoading.value = true
+    formData.topic = formData.topic.trim()
     
     // Upload image to Sorage
 
@@ -75,7 +85,7 @@ const handleSubmit = async () =>{
         },
         () => {
           // Handle successful upload
-          toast.success('Upload completed successfully')
+          
           console.log('Upload completed successfully');
           // Get the download URL of the uploaded file
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -89,12 +99,16 @@ const handleSubmit = async () =>{
             const copyFormData = {...formData}
 
             copyFormData.imageUrl = downloadURL
+            
+            copyFormData.date = serverTimestamp()
 
             console.log(copyFormData, 'copy of formdata')
 
           
             addDoc(collection(db, 'termiler'), copyFormData).then(() => {
+              toast.success('Your story successfully pulished')
               console.log('Document successfully written to Firestore');
+              
               // Reset form data and file input
               formData.value = {
                 title: '',
@@ -102,6 +116,7 @@ const handleSubmit = async () =>{
                 duration: '',
                 topic: ''
               };
+              
               fileName.value = '';
               fileInput.value.value = ''; // Reset file input
             }).catch((error) => {
@@ -195,6 +210,7 @@ const removeMultiUpload = () => {
           <div>
             <label class="sr-only" for="story">Story...</label>
             <textarea
+            
               class="w-full rounded-lg border-gray-200 p-3 text-sm"
               placeholder="Please write your story here..."
               rows="20"
@@ -223,9 +239,11 @@ const removeMultiUpload = () => {
                 placeholder="Topic"
                 type="Topic"
                 id="topic"
+                @input="validTopic"
                 v-model="formData.topic"
                 required
               />
+              <p :class="!isValid ?'visible': 'invisible'" class="text-red-500 pt-1 text-[10px] ">مۇناسىۋەتلىك كاتىگورىيەنىلا كىرگۈزۈڭ، ئالاھىدە بەلگە ۋە سانلارنى كىرگۈزمەڭ!</p>
             </div>
           </div>
 
@@ -240,8 +258,8 @@ const removeMultiUpload = () => {
             </div>
             <div class="w-4/12 lg:w-3/12 border border-gray-300 rounded-r-md flex items-center justify-between"
             >
-                <span  v-if="fileName" class="p-2">{{ fileName }}</span>
-                <span  v-else id="single-upload-text" class="p-2">Pick image</span>
+                <span  v-if="fileName" class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{ fileName }}</span>
+                <span  v-else id="single-upload-text" class="p-2 ">Pick image</span>
 
                  <button id="single-upload-delete" :class="{'hidden':!fileName, 'block':fileName}" @click.prevent="removeMultiUpload">
                     <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-red-700 w-3 h-3"

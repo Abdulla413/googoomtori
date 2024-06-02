@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     darkMode: 'class',
@@ -36,7 +37,6 @@ module.exports = {
       "./node_modules/tw-elements/js/**/*.js"
     ],
   
-
     fontFamily:{
       alkatip_t:"'ALKATIP_Tor', 'serif'",
       alkatip_tt:"'ALKATIP_Tor_Tom', 'serif'",
@@ -89,8 +89,7 @@ module.exports = {
     '4xl': '2.441rem',
     '5xl': '3.052rem',
   },
-  plugins: [],
-
-
-
+  plugins: [
+    require('flowbite/plugin')
+]
 }

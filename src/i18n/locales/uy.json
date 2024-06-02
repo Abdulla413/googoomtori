@@ -12,26 +12,30 @@
     "news": "خەۋەرلەر",
     "termiler": "تەرمىلەر",
     "websites": "باغلىنىش"
-
   },
 
   "register":{
-    "name":"ئابۇنىت ئىسمى",
-    "header":"ھېساب ئىچىڭ",
-    "email":"ئې مەكتۇبىڭىز",
-    "password":"ئىم",
-    "confirmPassword":"ئىمنى جەزىملەشتۈرۈش",
+    "header":"خەتلىنىش",
+    "name":" ئىسىم فامىلىسى",
+    "email":"ئې مەكتۇب",
+    "password":"شىفىر",
+    "confirmPassword":"شىفىرنى جەزىملەش",
     "accept":"قوشۇلىمەن",
-    "term":"ماددا ۋە شەرتلەرگە",
-    "button":"ھېساب ئېچىش"
+    "terms":"كېلىشىم ۋە شەرتلەرگە",
+    "button":"خەتلىنىمەن",
+    "footer":"ئەگەر خەتلەنگەن بولسىڭىز بۇ يەردىن",
+    "loginhere":"مەرھەمەت قىلىڭ!"
+    
   },
 
   
   "signin":{
-    "header":"Sign in to your account",
-    "email":"Your email",
-    "password":"Password",
-    "button":"Sign In"
+    "header":"مەرھەمەت قىلىڭ",
+    "email":"ئې مەكتۇب",
+    "password":"شىفىر",
+    "button":"مەرھەمەت قىلىمەن",
+    "footer":"تېخى خەتلەنمىگەن بولسىڭىز بۇ يەردىن",
+    "registerhere":"خەتلىنىڭ!"
   },
 
   "newsAgency":{
@@ -45,9 +49,9 @@
   "termilerPage":{
     "write":"يازىمەن",
     "topics":"كاتېگورىيە"
-
   },
-     
+
+    
     
     "locale":{
       "uy":"ئۇيغۇرچە",

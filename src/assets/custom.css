@@ -1,0 +1,17 @@
+/* src/assets/custom.css */
+.ltr-font h1, .ltr-font h2, .ltr-font h3, .ltr-font h4, .ltr-font h5, .ltr-font h6 {
+    font-family: 'DM Sans Bold', sans-serif;
+  }
+  
+  .ltr-font *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    font-family: 'DM Sans', sans-serif;
+  }
+  
+  .rtl-font h1, .rtl-font h2, .rtl-font h3, .rtl-font h4, .rtl-font h5, .rtl-font h6, .rtl-font, .rtl-font {
+    font-family: 'Alkatip_Tor_Tom';
+  }
+  
+  .rtl-font *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    font-family: 'Alkatip_Tor', sans-serif;
+  }
+  

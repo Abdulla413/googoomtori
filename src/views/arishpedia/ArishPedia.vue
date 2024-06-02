@@ -16,7 +16,7 @@ const showModal = ref(false)
 
 <template>
     
-    <div   class="flex flex-col mx-auto mb-4 justify-center h-screen font-alkatip_t">
+    <div   class="flex flex-col mx-auto mb-4 justify-center h-screen  ">
         <googoom-header />
 
         <h1>Arishpedia</h1>

@@ -18,12 +18,14 @@ export default {
 
 
 <template>
-  <select @change="switchLanguage">
+  <select @change="switchLanguage" class="bg-[#893311] text-white border-none hover:bg-green-500">
     <option
       v-for="sLocale in supportedLocales"
       :key="`locale-${sLocale}`"
       :value="sLocale"
       :selected="locale === sLocale"
+      class="hover:bg-green-500"
+
     >
       {{ t(`locale.${sLocale}`) }}
     </option>

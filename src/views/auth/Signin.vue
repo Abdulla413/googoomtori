@@ -1,14 +1,22 @@
 <script setup>
-import {reactive, ref} from "vue"
+import {reactive, ref, computed} from "vue"
 import LanguageSwitcher from '@/components/homepage/LanguageSwitcher.vue'
 import {db, auth} from "@/db/firebase.config.js"
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'vue-router';
 import { useStoreAuth } from "../../stores/user";
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 
 
-const storeAuth = useStoreAuth()
+
+const authStore = useStoreAuth();
+
+const router = useRouter();
+
+
+
 
 const credential = reactive({
   email :"",
@@ -17,13 +25,26 @@ const credential = reactive({
 
 
 const onSubmit = async ()=>{
-  if(!credential.email){
+
+  try {
+
+    if(!credential.email){
       toast.error('Please enter an Email')
     }else if(!credential.password){
       toast.error('Please enter the Password')
-    }else{
-      storeAuth.signInUser(credential)
+    }else {
+      await authStore.signInUser(credential);
+      router.push('/');
+      toast.success('You have successfully logged in!');
     }
+  } catch (error) {
+
+    console.log(error)
+    
+  }
+
+
+  
 
 }
 
@@ -35,7 +56,64 @@ const onSubmit = async ()=>{
 
 <template>
 
- <div
+
+<div class="font-[sans-serif] text-gray-800 bg-white max-w-4xl flex items-center mx-auto md:h-screen p-4">
+      <div class="grid md:grid-cols-3 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
+        <div class="max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full bg-gradient-to-r from-red-900 to-red-700 lg:px-8 px-4 py-4">
+          <div>
+            <h4 class="text-white text-lg"> {{ $t("signin.header") }}</h4>
+            <p class="text-[13px] text-white mt-2">خەتلىنىش بېتىگە مەرھەمەت، گۇگۇم ئارقىلىق دىئاسپورادىكى شەرقىي تۈركىستانلىقلارغا ئۇلىنىڭ ۋە شەرقىي تۈركىستان جامائىتى ئۈچۈن تۆھپە قوشۇڭ!</p>
+          </div>
+          <div>
+            <h4 class="text-white text-lg">ئاددى ۋە بىخەتەر خەتلىنىڭ!</h4>
+            <p class="text-[13px] text-white mt-2">
+           بېتىمىز خەتلىنىش جەريانى ئاددى ۋە بىخەتەر قىلىپ لاھىيەلەنگەن. بىز سىزنىڭ شەخسىيېتىڭىز ۋە ئۇچۇر بىخەتەرلىكىڭىزنى ئالاھىدە ئورۇنغا قويدۇق.</p>
+          </div>
+        </div>
+        <form class="md:col-span-2 w-full py-6 px-6 sm:px-16">
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold  t">{{ $t("signin.header") }} </h3>
+          </div>
+          <div class="space-y-5">
+            <div>
+              <label class="text-sm mb-2 block">{{ $t("register.email") }}</label>
+              <div class="relative flex items-center">
+                <input name="email" type="email" v-model="credential.email" required class="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 pr-10 rounded-md outline-blue-500" placeholder="Enter email" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4" viewBox="0 0 682.667 682.667">
+                  <defs>
+                    <clipPath id="a" clipPathUnits="userSpaceOnUse">
+                      <path d="M0 512h512V0H0Z" data-original="#000000"></path>
+                    </clipPath>
+                  </defs>
+                  <g clip-path="url(#a)" transform="matrix(1.33 0 0 -1.33 0 682.667)">
+                    <path fill="none" stroke-miterlimit="10" stroke-width="40" d="M452 444H60c-22.091 0-40-17.909-40-40v-39.446l212.127-157.782c14.17-10.54 33.576-10.54 47.746 0L492 364.554V404c0 22.091-17.909 40-40 40Z" data-original="#000000"></path>
+                    <path d="M472 274.9V107.999c0-11.027-8.972-20-20-20H60c-11.028 0-20 8.973-20 20V274.9L0 304.652V107.999c0-33.084 26.916-60 60-60h392c33.084 0 60 26.916 60 60v196.653Z" data-original="#000000"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <label class="text-sm mb-2 block">{{ $t("register.password") }}</label>
+              <div class="relative flex items-center">
+                <input name="password" type="password" v-model="credential.password" required class="bg-white border border-gray-300 w-full text-sm px-4 py-2.5 pr-10 rounded-md outline-blue-500" placeholder="Enter password" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                  <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="!mt-10">
+            <button type="button" class="w-full py-3 px-4 text-sm font-bold rounded text-white bg-[#893311] hover:bg-red-800 focus:outline-none" @click="onSubmit">
+              {{ $t("signin.button") }}
+            </button>
+          </div>
+          <p class="text-sm mt-6 text-center">{{ $t("signin.footer") }} <router-link to="/register" class="text-blue-600 font-semibold hover:underline ml-1">{{ $t("signin.registerhere") }}</router-link></p>
+        </form>
+      </div>
+    </div>
+
+
+ <!-- <div
     class="overflow-hidden bg-cover bg-no-repeat"
   style="background-image: url('https://tecdn.b-cdn.net/img/new/slides/041.webp'); height: 100vh;"
     >
@@ -59,11 +137,11 @@ const onSubmit = async ()=>{
     </div>
       </div>
 
-      <!--  Right column container with form  -->
+       Right column container with form  
       <div class="bg-white px-5 py-14 rounded-lg md:w-8/12 lg:ms-6 lg:w-4/12">
         <form @submit.prevent="onSubmit">
             
-            <!-- <div class="relative mb-6">
+             <div class="relative mb-6">
             <input
               type="text"
               v-model="formData.name"
@@ -75,9 +153,9 @@ const onSubmit = async ()=>{
               class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
               > {{ $t("register.name") }}
             </label>
-          </div> -->
+          </div> 
        
-          <!--  Email input --> 
+            Email input 
           <div class="relative mb-6"  >
             <input
               type="text"
@@ -92,7 +170,7 @@ const onSubmit = async ()=>{
             </label>
           </div>
 
-          <!--  Password input  -->
+            Password input 
           <div class="relative mb-6"  >
             <input
               type="password"
@@ -107,7 +185,7 @@ const onSubmit = async ()=>{
             </label>
           </div>
 
-          <!--  Remember me checkbox -->
+            Remember me checkbox 
           <div class="mb-6 flex items-center justify-between">
             <div class="mb-[0.125rem] block min-h-[1.5rem] ps-[1.5rem]">
               <input
@@ -139,7 +217,7 @@ const onSubmit = async ()=>{
             Sign in
           </button>
 
-           <!-- Divider--> 
+           Divider
           <div
             class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500">
             <p
@@ -148,7 +226,7 @@ const onSubmit = async ()=>{
             </p>
           </div>
 
-           <!-- Social login buttons -->
+            Social login buttons 
           <a
             class="mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
             style="background-color: #3b5998"
@@ -194,7 +272,7 @@ const onSubmit = async ()=>{
   </div>
 </section>
 </div>
-</div> 
+</div>  -->
 
 </template>
 

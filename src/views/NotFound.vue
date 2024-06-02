@@ -1,9 +1,9 @@
 <script setup></script>
 <template>
   <div
-    class="font-alkatip_t flex flex-col justify-center items-center min-h-screen"
+    class="  flex flex-col justify-center items-center min-h-screen"
   >
-    <h2 class="text-5xl font-alkatip_tt text-red-600 py-20">
+    <h2 class="text-5xl  t text-red-600 py-20">
       {{ $t("notFoundPage.notFound") }}
     </h2>
     <h3 class="text-2xl font-bold text-blue-800">
